@@ -1,0 +1,150 @@
+<!--
+项目目录结构（Wish Box PWA）
+
+wish-box/
+├── index.html              # 主入口（本文件）
+├── manifest.json           # PWA 配置
+├── service-worker.scripts       # 离线支持
+├── assets/
+│   ├── icons/              # App 图标（你提供）
+│   ├── video/              # 开场视频 & 隐藏视频
+│   │   └── opening.mp4
+│   └── audio/              # 可选背景音乐
+├── styles/
+│   ├── base.css            # 字体 / 颜色 / 基础治愈风格
+│   ├── layout.css          # 页面布局
+│   └── animation.css       # 动画
+├── scripts/
+│   ├── app.scripts              # 应用入口控制
+│   ├── wishPool.scripts         # 100 个心愿数据
+│   ├── drawLogic.scripts        # 抽取逻辑
+│   ├── storage.scripts          # 本地存储
+│   └── animation.scripts        # 动画控制
+└── README.md
+-->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="心愿盲盒" />
+
+    <title>心愿盲盒</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png" onerror="this.style.display='none'" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/animation.css" />
+    <link rel="stylesheet" href="styles/secret.css" />
+</head>
+
+<body>
+
+    <!-- 开场视频层 -->
+    <section id="opening" class="screen visible">
+        <video id="openingVideo" playsinline webkit-playsinline muted></video>
+        <div class="opening-mask"></div>
+        <p class="opening-text">今天，好像有点累了</p>
+    </section>
+
+    <!-- 主界面 -->
+    <main id="home" class="screen hidden">
+        <header class="app-header">
+            <h1 class="app-title">心愿盲盒</h1>
+            <p class="app-subtitle">这里有一些话，留给你慢慢打开</p>
+        </header>
+
+        <section class="modes">
+            <button class="mode-card" data-mode="sad">
+                <!-- <span class="emoji">😔</span> -->
+                <!-- <span class="mode-name">难过</span> -->
+                <span class="mode-text"></span>
+                <span class="mode-count" id="count-sad">1 / 1</span>
+            </button>
+
+            <button class="mode-card" data-mode="angry">
+                <!-- <span class="emoji">😠</span> -->
+                <!-- <span class="mode-name">生气</span> -->
+                <span class="mode-text"></span>
+                <span class="mode-count" id="count-angry">1 / 1</span>
+            </button>
+
+            <button class="mode-card" data-mode="happy">
+                <!-- <span class="emoji">😊</span> -->
+                <!-- <span class="mode-name">开心</span> -->
+                <span class="mode-text"></span>
+                <span class="mode-count" id="count-happy">1 / 1</span>
+            </button>
+
+            <button class="mode-card hidden-mode" data-mode="hidden">
+                <!-- <span class="emoji">✨</span> -->
+                <!-- <span class="mode-name">隐藏款</span> -->
+                <span class="mode-text"></span>
+                <span class="mode-count" id="count-hidden">1 / 1</span>
+            </button>
+        </section>
+    </main>
+
+    <!-- 抽取结果页 -->
+    <section id="result" class="screen hidden">
+        <div class="wish-box">
+            <div class="wish-content" id="wishText"></div>
+            <div class="wish-media">
+                <img id="wishImage" class="wish-image hidden" alt="心愿插图" loading="lazy" />
+                <audio id="wishAudio" class="wish-audio hidden" controls preload="none"></audio>
+            </div>
+        </div>
+        <!-- <p class="wish-footer">我一直在</p> -->
+        <p id="endingHint" class="hidden"></p>
+        <button id="backHome" class="ghost-btn">回到首页</button>
+    </section>
+
+    <!-- 隐藏终极入口 -->
+    <section id="secret" class="screen hidden">
+        <!-- <p class="secret-text">好像，有什么一直没说完</p>
+        <input type="password" id="secretInput" placeholder="输入那句话" />
+        <button id="secretConfirm" class="primary-btn">确认</button>
+        <video id="secretVideo" class="hidden" controls></video> -->
+        <div class="secret-box">
+            <p class="secret-title">如果你走到了这里</p>
+            <p class="secret-desc">那我想确认一件事</p>
+
+            <input id="secretInput" type="password" placeholder="你心里知道的那个答案" autocomplete="off" />
+
+            <button id="secretConfirm">确认</button>
+
+            <!-- 视频区域 -->
+            <div class="secret-video-wrapper hidden">
+                <video id="secretVideo" playsinline webkit-playsinline controls></video>
+            </div>
+            <p id="finalEnding" class="final-ending hidden"></p>
+        </div>
+
+
+    </section>
+
+    <!-- Scripts -->
+    <script src="scripts/wishPool.js"></script>
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/drawLogic.js"></script>
+    <script src="scripts/animation.js"></script>
+    <script src="scripts/app.js"></script>
+
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js');
+        }
+    </script>
+
+</body>
+
+</html>

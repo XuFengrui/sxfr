@@ -1,0 +1,15 @@
+[
+  { "id": 1, "category": "sad", "content": "我会一直陪在你身边，听你诉说所有的不开心" },
+  { "id": 2, "category": "sad", "content": "给你一个大大的拥抱，让所有难过都烟消云散" },
+  { "id": 3, "category": "sad", "content": "今晚我请你吃你最爱的冰淇淋，甜甜的心情就会回来啦" },
+  { "id": 4, "category": "sad", "content": "我们一起看一部搞笑电影吧，笑一笑十年少！" },
+
+  { "id": 5, "category": "angry", "content": "对不起对不起！我错了，请原谅我好不好？" },
+  { "id": 6, "category": "angry", "content": "我承认是我的错，我愿意做任何事来弥补！" },
+  { "id": 7, "category": "angry", "content": "给你一个超级大的道歉拥抱，能消气了吗？" },
+
+  { "id": 8, "category": "happy", "content": "太好了！让我们一起庆祝你的好心情！" },
+  { "id": 9, "category": "happy", "content": "你的笑容是我最大的幸福，继续保持哦！" },
+
+  { "id": 10, "category": "hidden", "content": "终极彩蛋：还有一个更大的惊喜等着你..." }
+]

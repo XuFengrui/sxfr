@@ -1,0 +1,448 @@
+/* ===============================
+   layout.css
+   iPhone · PWA · 温柔治愈布局
+   =============================== */
+
+/* 页面整体容器 */
+.app-container {
+  min-height: 100vh;
+  padding: 24px 20px 32px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 顶部区域 */
+.app-header {
+  margin-top: max(env(safe-area-inset-top), 24px);
+  margin-bottom: 8px;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+  color: var(--text-main);
+}
+
+.app-subtitle {
+  font-size: 15px;
+  opacity: 0.75;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* 分类选择区 */
+.category-list {
+  margin-top: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 单个分类卡片 */
+.category-card {
+  padding: 16px 18px;
+  border-radius: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 分类名称 */
+.category-name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 剩余数量 */
+.category-count {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+/* 抽取按钮区域 */
+.draw-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* 主抽取按钮 */
+.draw-button {
+  width: 100%;
+  padding: 16px 0;
+  border-radius: 20px;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+/* 心愿展示卡片 */
+.wish-card {
+  margin-top: 32px;
+  padding: 28px 22px;
+  border-radius: 20px;
+
+  text-align: center;
+}
+
+/* 心愿文字 */
+.wish-content {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* 底部提示 / 进度 */
+.app-footer {
+  margin-bottom: env(safe-area-inset-bottom);
+  margin-top: 24px;
+
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+/* 结尾文字 */
+.endingHint {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.mode-card {
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  width: 100%;
+  border-radius: 14px;
+  border: none;
+  background: rgba(255,255,255,0.6);
+  font-size: 15px;
+  text-align: left;
+  line-height: 1.4;
+}
+
+/* 隐藏功能入口 */
+.hidden-entry {
+  margin-top: 12px;
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+/* 通用卡片质感 */
+.card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* 居中工具类 */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 禁用态 */
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ================== 页面屏幕切换 ================== */
+.screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.screen.visible {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+}
+
+.screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ================== 开场视频屏幕 ================== */
+#opening {
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+#openingVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.opening-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.opening-text {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  padding: 0 24px;
+  opacity: 0.95;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ================== 主界面 (home) ================== */
+#home {
+  padding: env(safe-area-inset-top) 20px env(safe-area-inset-bottom) 20px;
+  background: var(--bg-color);
+}
+
+.modes {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mode-card {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 22px;
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: var(--soft-shadow);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.25s ease,
+              opacity 0.2s ease;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mode-card:not(.disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.mode-card:not(.disabled):active {
+  transform: scale(0.97) translateY(0);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.mode-text {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-main);
+  text-align: left;
+}
+
+.mode-count {
+  font-size: 13px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  margin-left: 12px;
+}
+
+.mode-card.disabled {
+  opacity: 0.5;
+}
+
+.mode-card.hidden-mode {
+  opacity: 0.6;
+}
+
+.secret-hint {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  padding: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.secret-hint:active {
+  opacity: 1;
+}
+
+/* ================== 结果页面 ================== */
+#result {
+  padding: env(safe-area-inset-top) 24px env(safe-area-inset-bottom) 24px;
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.wish-box {
+  width: 100%;
+  max-width: 380px;
+  padding: 32px 24px;
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.wish-content {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-main);
+  text-align: center;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.wish-media {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.wish-image {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.wish-audio {
+  width: 100%;
+  outline: none;
+}
+
+#endingHint {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+  opacity: 0;
+}
+
+#endingHint.fade-in {
+  opacity: 0.8;
+}
+
+.ghost-btn {
+  margin-top: 32px;
+  padding: 14px 36px;
+  background: transparent;
+  border: 1.5px solid rgba(58, 58, 58, 0.2);
+  border-radius: 24px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.ghost-btn:hover {
+  border-color: rgba(58, 58, 58, 0.4);
+  color: var(--text-main);
+}
+
+.ghost-btn:active {
+  background: rgba(0, 0, 0, 0.04);
+  transform: scale(0.96);
+  border-color: rgba(58, 58, 58, 0.3);
+}
+
+/* ================== 移动端适配 (iPhone) ================== */
+@media (max-width: 430px) {
+  #home, #result, #secret {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .app-title {
+    font-size: 22px;
+  }
+
+  .mode-card {
+    padding: 18px 18px;
+  }
+
+  .wish-box {
+    padding: 28px 20px;
+    margin-bottom: 28px;
+  }
+
+  .wish-content {
+    font-size: 17px;
+  }
+
+  .wish-image {
+    max-height: 200px;
+  }
+
+  .ghost-btn {
+    width: 100%;
+  }
+}
+
+/* ================== 隐藏页面 ================== */
+#secret {
+  padding: env(safe-area-inset-top) 20px env(safe-area-inset-bottom) 20px;
+  background: linear-gradient(180deg, #f7f3ef, #ece6df);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
