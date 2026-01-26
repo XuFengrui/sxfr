@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { PwaRegister } from "@/components/pwa-register"
 
@@ -59,7 +58,6 @@ export default function RootLayout({
       <body className="font-sans antialiased overflow-x-hidden">
         {children}
         <PwaRegister />
-        <Analytics />
       </body>
     </html>
   )
