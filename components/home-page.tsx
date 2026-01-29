@@ -141,7 +141,7 @@ export function HomePage({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             onClick={onGoToSecret}
-            className="w-full max-w-sm h-12 rounded-2xl bg-hidden-bg text-hidden-text font-medium text-base
+            className="w-full max-w-xs h-12 rounded-2xl bg-hidden-bg text-hidden-text font-medium text-base
               active:scale-95 transition-transform touch-manipulation shadow-sm"
           >
             好像还有些话没有说完

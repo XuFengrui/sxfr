@@ -11,6 +11,9 @@ import { wishes } from "@/lib/wishes-data"
 export type CategoryType = "sad" | "angry" | "happy" | "hidden"
 export type ViewState = "home" | "draw" | "password" | "video"
 
+// 抽到多少个心愿后，首页出现“好像还有些话没有说完”按钮
+const SECRET_UNLOCK_AFTER_DRAWS = 10
+
 export default function Page() {
   const [viewState, setViewState] = useState<ViewState>("home")
   const [selectedCategory, setSelectedCategory] = useState<CategoryType | null>(null)
@@ -22,7 +25,7 @@ export default function Page() {
     if (saved) {
       const parsed = JSON.parse(saved)
       setDrawnWishes(parsed)
-      setAllComplete(parsed.length >= wishes.length)
+      setAllComplete(parsed.length >= SECRET_UNLOCK_AFTER_DRAWS)
     }
   }, [])
 
@@ -53,7 +56,7 @@ export default function Page() {
     const newDrawn = [...drawnWishes, wishId]
     setDrawnWishes(newDrawn)
     localStorage.setItem("drawnWishes", JSON.stringify(newDrawn))
-    if (newDrawn.length >= wishes.length) {
+    if (newDrawn.length >= SECRET_UNLOCK_AFTER_DRAWS) {
       setAllComplete(true)
     }
   }
