@@ -1,3 +1,7 @@
 # Cloudflare Pages 重定向规则
-# 所有路由都重定向到 index.html（用于客户端路由）
-/*    /index.html   200
+#
+# 注意：本项目使用 Next.js `output: 'export'`（静态导出），资源会以真实文件形式输出到 `out/`。
+# 如果使用“全量重写到 index.html”的 SPA 规则，会把 `/surprise-video.mp4` 之类的静态资源也重写成 HTML，
+# 导致 `<video>`/`<audio>` 无法播放。
+#
+# 因此这里不再设置全量重写规则。

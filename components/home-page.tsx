@@ -144,7 +144,7 @@ export function HomePage({
             className="w-full max-w-sm h-12 rounded-2xl bg-hidden-bg text-hidden-text font-medium text-base
               active:scale-95 transition-transform touch-manipulation shadow-sm"
           >
-            好像还有些话没有说完......
+            好像还有些话没有说完
           </motion.button>
         )}
         

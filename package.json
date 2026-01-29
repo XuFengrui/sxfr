@@ -6,6 +6,7 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
+    "postbuild": "node scripts/postbuild-copy-public-media.mjs",
     "start": "next start"
   },
   "dependencies": {

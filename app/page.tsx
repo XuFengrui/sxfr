@@ -27,11 +27,22 @@ export default function Page() {
   }, [])
 
   useEffect(() => {
-    // 刷新/回到首页时，如果已全部抽完，自动跳转到密码页
-    if (allComplete && viewState === "home") {
-      setViewState("password")
+    // Robust "go home" fallback: set `location.hash = "#home"` and catch it here.
+    const syncFromHash = () => {
+      if (typeof window === "undefined") return
+      const hash = window.location.hash.replace(/^#/, "")
+      if (hash === "home") {
+        setSelectedCategory(null)
+        setViewState("home")
+        // Clean the hash without adding a new history entry
+        window.history.replaceState(null, "", window.location.pathname + window.location.search)
+      }
     }
-  }, [allComplete, viewState])
+
+    syncFromHash()
+    window.addEventListener("hashchange", syncFromHash)
+    return () => window.removeEventListener("hashchange", syncFromHash)
+  }, [])
 
   const handleSelectCategory = (category: CategoryType) => {
     setSelectedCategory(category)
@@ -44,8 +55,6 @@ export default function Page() {
     localStorage.setItem("drawnWishes", JSON.stringify(newDrawn))
     if (newDrawn.length >= wishes.length) {
       setAllComplete(true)
-      // 最后一个心愿抽出后，稍等动画结束自动进入密码页
-      setTimeout(() => setViewState("password"), 900)
     }
   }
 

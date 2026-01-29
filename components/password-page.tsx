@@ -18,6 +18,18 @@ export function PasswordPage({ onUnlock, onBack }: PasswordPageProps) {
   const [error, setError] = useState(false)
   const [shake, setShake] = useState(false)
 
+  const handleBack = () => {
+    // 1) Try to go back via in-app state (smooth)
+    // 2) Also force a "#home" hash change as a robust fallback
+    try {
+      onBack()
+    } finally {
+      if (typeof window !== "undefined") {
+        window.location.hash = "home"
+      }
+    }
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (password === CORRECT_PASSWORD) {
@@ -42,7 +54,8 @@ export function PasswordPage({ onUnlock, onBack }: PasswordPageProps) {
       {/* Header */}
       <header className="flex items-center px-4 py-3 pt-safe">
         <button
-          onClick={onBack}
+          type="button"
+          onClick={handleBack}
           className="flex items-center gap-1 text-muted-foreground active:opacity-70 transition-opacity touch-manipulation"
         >
           <ArrowLeft className="w-5 h-5" />
