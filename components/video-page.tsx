@@ -7,6 +7,9 @@ interface VideoPageProps {
   onBack: () => void
 }
 
+const BILIBILI_BVID = "BV1NzzfBuEws"
+const BILIBILI_URL = `https://player.bilibili.com/player.html?bvid=${BILIBILI_BVID}&autoplay=0`
+
 export function VideoPage({ onBack }: VideoPageProps) {
   return (
     <motion.div
@@ -47,23 +50,23 @@ export function VideoPage({ onBack }: VideoPageProps) {
             </p>
           </div>
 
-          {/* Video */}
+          {/* Video (Bilibili embed, responsive 16:9) */}
           <div className="rounded-2xl overflow-hidden shadow-2xl bg-background/10">
-            <video
-              controls
-              autoPlay
-              playsInline
-              className="w-full aspect-video"
-              src="/surprise-video.mp4"
-              poster="/video-poster.jpg"
-            >
-              您的浏览器不支持视频播放
-            </video>
+            <div className="relative w-full aspect-video">
+              <iframe
+                src={BILIBILI_URL}
+                title="给你的专属惊喜视频"
+                className="absolute inset-0 w-full h-full"
+                allowFullScreen
+                frameBorder="0"
+              />
+            </div>
           </div>
 
           {/* Note */}
+          {/* Note */}
           <p className="text-center mt-4 text-xs text-background/40">
-            请将视频文件命名为 surprise-video.mp4 放在 public 文件夹
+            视频通过哔哩哔哩私密链接播放
           </p>
         </motion.div>
       </div>
