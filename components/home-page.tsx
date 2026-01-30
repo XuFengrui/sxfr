@@ -68,14 +68,14 @@ export function HomePage({
         transition={{ delay: 0.1 }}
         className="text-center mb-8"
       >
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-primary/10 mb-4">
-          <span className="text-3xl">🎀</span>
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-primary/10 mb-4 overflow-hidden">
+          <img src="/logo.jpg" alt="" className="w-full h-full object-cover" />
         </div>
         <h1 className="text-2xl font-semibold text-foreground mb-1">
-          心愿盲盒
+          情绪充电屋
         </h1>
         <p className="text-sm text-muted-foreground">
-          选择你现在的心情
+          宝宝，有没有想我！
         </p>
       </motion.header>
 
@@ -141,10 +141,10 @@ export function HomePage({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             onClick={onGoToSecret}
-            className="w-full max-w-xs h-12 rounded-2xl bg-hidden-bg text-hidden-text font-medium text-base
+            className="w-full max-w-[200px] h-12 rounded-2xl bg-hidden-bg text-hidden-text font-medium text-base
               active:scale-95 transition-transform touch-manipulation shadow-sm"
           >
-            好像还有些话没有说完
+            好像还有些话没有说完...
           </motion.button>
         )}
         
@@ -154,7 +154,7 @@ export function HomePage({
               onReset()
             }
           }}
-          className="flex items-center gap-2 text-sm text-muted-foreground active:opacity-70 transition-opacity touch-manipulation"
+          className="hidden flex items-center gap-2 text-sm text-muted-foreground active:opacity-70 transition-opacity touch-manipulation"
         >
           <RotateCcw className="w-4 h-4" />
           重置心愿盒

@@ -4,20 +4,24 @@ import "./globals.css"
 import { PwaRegister } from "@/components/pwa-register"
 
 export const metadata: Metadata = {
-  title: "心愿盲盒",
-  description: "为你准备的专属心愿盲盒",
+  title: "情绪充电屋",
+  description: "为你准备的专属情绪充电屋",
   generator: "v0.app",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "心愿盲盒",
+    title: "情绪充电屋",
   },
   formatDetection: {
     telephone: false,
   },
   icons: {
     icon: [
+      {
+        url: "/logo.jpg",
+        type: "image/jpeg",
+      },
       {
         url: "/icon-light-32x32.png",
         media: "(prefers-color-scheme: light)",
@@ -31,7 +35,7 @@ export const metadata: Metadata = {
         type: "image/svg+xml",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/logo.jpg",
   },
 }
 

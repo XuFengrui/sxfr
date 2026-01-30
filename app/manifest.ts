@@ -4,17 +4,17 @@ export const dynamic = "force-static"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "心愿盲盒",
-    short_name: "心愿盲盒",
-    description: "为你准备的专属心愿盲盒",
+    name: "情绪充电屋",
+    short_name: "情绪充电屋",
+    description: "为你准备的专属情绪充电屋",
     start_url: "/",
     scope: "/",
     display: "standalone",
     background_color: "#fef7f8",
     theme_color: "#fef7f8",
     icons: [
-      // iOS 主屏主要用 apple-touch-icon（见 metadata.icons.apple）
-      { src: "/icon.svg", sizes: "any", type: "image/svg+xml" }
+      { src: "/logo.jpg", sizes: "512x512", type: "image/jpeg", purpose: "any" },
+      { src: "/logo.jpg", sizes: "192x192", type: "image/jpeg", purpose: "any maskable" }
     ]
   }
 }

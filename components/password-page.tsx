@@ -134,7 +134,7 @@ export function PasswordPage({ onUnlock, onBack }: PasswordPageProps) {
 
           {/* Hint */}
           <p className="text-xs text-center text-muted-foreground mt-6">
-            提示：密码是我对你说的话
+            密码提示：我送你第一件礼物的时候说过
           </p>
         </motion.div>
       </div>
