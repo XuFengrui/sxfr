@@ -12,7 +12,7 @@ export type CategoryType = "sad" | "angry" | "happy" | "hidden"
 export type ViewState = "home" | "draw" | "password" | "video"
 
 // 抽到多少个心愿后，首页出现“好像还有些话没有说完”按钮
-const SECRET_UNLOCK_AFTER_DRAWS = 10
+const SECRET_UNLOCK_AFTER_DRAWS = 100
 
 export default function Page() {
   const [viewState, setViewState] = useState<ViewState>("home")

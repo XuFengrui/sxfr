@@ -75,7 +75,7 @@ export function HomePage({
           情绪充电屋
         </h1>
         <p className="text-sm text-muted-foreground">
-          宝宝，有没有想我！
+          想牵你的手 从心动 到古稀 到尽头
         </p>
       </motion.header>
 

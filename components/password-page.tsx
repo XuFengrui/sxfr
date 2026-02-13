@@ -10,7 +10,7 @@ interface PasswordPageProps {
   onBack: () => void
 }
 
-const CORRECT_PASSWORD = "iloveyou" // 可以修改这个密码
+const CORRECT_PASSWORD = "SxfR1314" // 可以修改这个密码
 
 export function PasswordPage({ onUnlock, onBack }: PasswordPageProps) {
   const [password, setPassword] = useState("")
